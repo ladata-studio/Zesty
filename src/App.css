@@ -63,3 +63,39 @@ img {
   width: 100%;
   object-fit: cover;
 }
+
+aside {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #E8E8E8;
+  z-index: 2;
+}
+
+.loading-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 75%;
+}
+
+progress {
+  height: 20px;
+  width: 100%;
+  border: 2px solid #294910;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #E8E8E8;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #294910;
+}
+
+progress[value]::-moz-progress-bar {
+  background-color: #294910;
+}

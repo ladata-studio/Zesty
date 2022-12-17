@@ -10,13 +10,26 @@ import avocado from './assets/image6.jpeg';
 
 const images = [cabbage, mango, fig, gaze, peach, avocado];
 
+const Loading = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  return (
+    <aside>
+      <div className='loading-bar'>
+        <label htmlFor='images-loaded'>Loading your favorite images...</label>
+        <progress id='images-loaded' max='100' value='50'></progress>
+      </div>
+    </aside>
+  )
+}
+
 const App = () => {
   const [imageIndex, setImageIndex] = useState(0);
 
   const handleClick = () => {
     setImageIndex(ii => (ii + 1) % images.length);
   }
-  
+
   return (
     <section>
       <header>
@@ -28,8 +41,9 @@ const App = () => {
       </header>
 
       <figure>
-        <figcaption>{ imageIndex + 1 } / { images.length }</figcaption>
-        <img src={images[imageIndex]} alt='' onClick={ handleClick } />
+        <Loading />
+        <figcaption>{imageIndex + 1} / {images.length}</figcaption>
+        <img src={images[imageIndex]} alt='' onClick={handleClick} />
       </figure>
     </section>
   );
