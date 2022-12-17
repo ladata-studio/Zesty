@@ -108,3 +108,29 @@ progress[value]::-webkit-progress-value {
 progress[value]::-moz-progress-bar {
   background-color: #294910;
 }
+
+@media screen and (max-width: 800px) {
+  section {
+    flex-direction: column;
+  }
+
+  header {
+    width: 100vw;
+  }
+
+  h1 {
+    font-size: 80px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  figure {
+    width: 100vw;
+  }
+
+  figcaption {
+    font-size: 30px;
+  }
+}
