@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import cabbage from './assets/image1.jpeg';
@@ -11,6 +11,11 @@ import avocado from './assets/image6.jpeg';
 const images = [cabbage, mango, fig, gaze, peach, avocado];
 
 const App = () => {
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const handleClick = () => {
+    setImageIndex(ii => (ii + 1) % images.length);
+  }
   
   return (
     <div className='App'>
@@ -22,7 +27,7 @@ const App = () => {
         </h2>
       </div>
       <div className='image-container'>
-        <img src={images[0]} alt='' />
+        <img src={images[imageIndex]} alt='' onClick={ handleClick } />
       </div>
     </div>
   );
