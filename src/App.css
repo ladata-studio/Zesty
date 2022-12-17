@@ -40,6 +40,12 @@ h2 {
 .image-container {
   position: relative;
   width: 50vw;
+  height: 100vh;
+  overflow: hidden;
   margin: 0;
   background-color: #FFFFFF;
+}
+
+img {
+  width: 100%;
 }
