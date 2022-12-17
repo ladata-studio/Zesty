@@ -59,9 +59,18 @@ figcaption {
 }
 
 img {
+  display: none;
   height: 100vh;
   width: 100%;
   object-fit: cover;
+}
+
+img.display {
+  display: block;
+}
+
+img.hide {
+  display: none;
 }
 
 aside {

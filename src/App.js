@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import './App.css';
 
-import cabbage from './assets/image1.jpeg';
-import mango from './assets/image2.jpeg';
-import fig from './assets/image3.jpeg';
-import gaze from './assets/image4.jpeg';
-import peach from './assets/image5.jpeg';
-import avocado from './assets/image6.jpeg';
+const images = [
+  'https://i.ibb.co/yF1hMQ6/image1.jpg',
+  'https://i.ibb.co/DKnJbmv/image2.jpg',
+  'https://i.ibb.co/NnSzy4w/image3.jpg',
+  'https://i.ibb.co/9TbfHnR/image4.jpg',
+  'https://i.ibb.co/59hZg7g/image5.jpg',
+  'https://i.ibb.co/xHXGzSz/image6.jpg'
+];
 
-const images = [cabbage, mango, fig, gaze, peach, avocado];
-
-const Loading = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
+const Loading = ({ max, value }) => {
   return (
     <aside>
       <div className='loading-bar'>
         <label htmlFor='images-loaded'>Loading your favorite images...</label>
-        <progress id='images-loaded' max='100' value='50'></progress>
+        <progress
+          id='images-loaded'
+          max={max}
+          value={value}>
+        </progress>
       </div>
     </aside>
   )
@@ -25,9 +27,14 @@ const Loading = () => {
 
 const App = () => {
   const [imageIndex, setImageIndex] = useState(0);
+  const [numLoaded, setNumLoaded] = useState(0);
 
   const handleClick = () => {
     setImageIndex(ii => (ii + 1) % images.length);
+  }
+
+  const handleImageLoad = () => {
+    setNumLoaded(nl => nl + 1);
   }
 
   return (
@@ -41,9 +48,18 @@ const App = () => {
       </header>
 
       <figure>
-        <Loading />
+        {numLoaded < images.length && <Loading max={images.length} value={numLoaded} />}
         <figcaption>{imageIndex + 1} / {images.length}</figcaption>
-        <img src={images[imageIndex]} alt='' onClick={handleClick} />
+        {images.map((imageURL, index) =>
+          <img
+            key={imageURL}
+            src={imageURL}
+            alt=''
+            onClick={handleClick}
+            onLoad={handleImageLoad}
+            className={imageIndex === index ? 'display' : 'hide'}
+          />
+        )}
       </figure>
     </section>
   );
